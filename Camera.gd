@@ -14,3 +14,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.transform.origin.z = get_parent().get_node("Player").transform.origin.z - 4
+	get_parent().get_node("CoronaVirus").transform.origin.z = get_parent().get_node("Player").transform.origin.z - 2
+	get_parent().get_node("DirectionalLight").transform.origin.z = get_parent().get_node("Player").transform.origin.z + 80

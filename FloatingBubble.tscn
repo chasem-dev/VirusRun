@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/bubble.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="ParticlesMaterial" id=2]
+next_pass = SubResource( 1 )
+emission_shape = 2
+emission_box_extents = Vector3( 4, 2, 1 )
+spread = 180.0
+gravity = Vector3( 0, 9.8, 0 )
+initial_velocity = -3.0
+initial_velocity_random = 1.0
+angular_velocity_random = 1.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 3 )
+
+[node name="FloatingBubble" type="Spatial"]
+
+[node name="Area" type="Area" parent="."]
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0666304, 4.76837e-07, 0.0586228 )
+amount = 20
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )

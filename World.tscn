@@ -1,14 +1,57 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
 [ext_resource path="res://Runway.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World.gd" type="Script" id=4]
 [ext_resource path="res://ToiletPaper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.0962963, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.286275, 0, 0.286275, 1, 0.976471, 0.254902, 0.792157, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 0.2
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 30.0
+linear_accel = 2.0
+angle = 360.0
+angle_random = 1.0
+scale = 3.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="QuadMesh" id=3]
 
 [node name="World" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156105, -0.0302088, 0.00644398 )
 script = ExtResource( 4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.7354, 0.677634, 0, -0.677634, 0.7354, 0, 13.031, 20 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.249596, -8.52684 )
@@ -25,7 +68,7 @@ transform = Transform( 8, 0, 0, 0, 6, 0, 0, 0, 20, -3, -3, 7 )
 [node name="ToiletPaper" type="Spatial" parent="."]
 
 [node name="ToiletPaper1" parent="ToiletPaper" instance=ExtResource( 5 )]
-transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, -5.78462 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.29305, 0, -5.78462 )
 
 [node name="ToiletPaper2" parent="ToiletPaper" instance=ExtResource( 5 )]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.800256, 0, -1.26357 )
@@ -35,3 +78,26 @@ transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.787419, 0, 3.58384 )
 
 [node name="ToiletPaper4" parent="ToiletPaper" instance=ExtResource( 5 )]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.648648, 1.50394, 6.44973 )
+
+[node name="CoronaVirus" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="CoronaVirus"]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.763, 0 )
+material_override = SubResource( 1 )
+visibility_aabb = AABB( -1.77509, -1.29435, -0.260022, 3.55018, 2.5887, 0.520045 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
+
+[node name="Particles2" type="Particles" parent="CoronaVirus"]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 2, 0.763, 0 )
+material_override = SubResource( 1 )
+visibility_aabb = AABB( -1.77509, -1.29435, -0.260022, 3.55018, 2.5887, 0.520045 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
+
+[node name="Particles3" type="Particles" parent="CoronaVirus"]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.926, 0.763, 0 )
+material_override = SubResource( 1 )
+visibility_aabb = AABB( -1.77509, -1.29435, -0.260022, 3.55018, 2.5887, 0.520045 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
