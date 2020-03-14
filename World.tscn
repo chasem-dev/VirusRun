@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://Runway.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World.gd" type="Script" id=4]
+[ext_resource path="res://ToiletPaper.tscn" type="PackedScene" id=5]
+
+[node name="World" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156105, -0.0302088, 0.00644398 )
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.249596, -8.52684 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 1.32064e-07, -2.97879e-07, 0, 0.914183, 0.405301, 3.25841e-07, 0.405301, -0.914183, 0, 4, -5 )
+script = ExtResource( 2 )
+
+[node name="Runway" type="Spatial" parent="."]
+
+[node name="Runway1" parent="Runway" instance=ExtResource( 3 )]
+transform = Transform( 8, 0, 0, 0, 6, 0, 0, 0, 20, -3, -3, 7 )
+
+[node name="ToiletPaper" type="Spatial" parent="."]
+
+[node name="ToiletPaper1" parent="ToiletPaper" instance=ExtResource( 5 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, -5.78462 )
+
+[node name="ToiletPaper2" parent="ToiletPaper" instance=ExtResource( 5 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.800256, 0, -1.26357 )
+
+[node name="ToiletPaper3" parent="ToiletPaper" instance=ExtResource( 5 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.787419, 0, 3.58384 )
+
+[node name="ToiletPaper4" parent="ToiletPaper" instance=ExtResource( 5 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.648648, 1.50394, 6.44973 )
