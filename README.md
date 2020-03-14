@@ -4,6 +4,8 @@ A Meme Game built in Godot. Collect toilet paper and evade the Corona Virus.
 ## Setup
 After cloning the project on your local machine simply import into godot by pointing it to the .project file.
 
+## Info
+Game is hard coded to use W and D and Space KEY.
 
 ## Progress
 ![Movement](https://gyazo.com/0e271b5190941f64a2ee23addeadc902.gif)
